@@ -1,10 +1,10 @@
 import random
-import win32com.client  # Using pywin32 instead of pyttsx3
+import win32com.client  # Using pywin32 instead of pyttsx3/For T-T-S fuctionality (Text to Speech)
 
-# Initialize Windows Speech API (SAPI)
+# Init Windows Speech API (SAPI)
 speaker = win32com.client.Dispatch("SAPI.SpVoice")
 
-# Predefined D&D-style affirmations (heroic encouragements)
+# D&D-style affirmations (heroic encouragements)
 affirmations = [
     "The road ahead may be long, but your will is unbreakable.",
     "Even the smallest spark can ignite a great fire within you.",
@@ -18,9 +18,9 @@ affirmations = [
     "You are not alone—your allies walk beside you in spirit and in strength."
 ]
 
-hero_class = None  # Store the user's chosen D&D class (e.g., Paladin, Sorcerer)
+hero_class = None  # Store chosen D&D class (e.g., Paladin, Sorcerer)
 
-# Function to display D&D-style ASCII art
+# Function to display D&D-style ASCII art for the title
 def display_banner():
     print(r"""
 
@@ -43,7 +43,7 @@ def display_banner():
 def speak(text):
     speaker.Speak(text)
 
-# Function to generate a D&D-style affirmation
+# Generate a D&D-style affirmation
 def generate_affirmation():
     affirmation = random.choice(affirmations)
     if hero_class:
@@ -51,7 +51,7 @@ def generate_affirmation():
     print("\n🎲 " + affirmation + "\n")
     speak(affirmation)
 
-# Function to let the user choose a D&D class
+# Function to choose a D&D class
 def set_hero_class():
     global hero_class
     new_class = input("What is your class, adventurer? (e.g., Paladin, Rogue, Sorcerer) Or, press Enter to clear: ").strip()
@@ -64,7 +64,7 @@ def set_hero_class():
         print("Class selection cleared. You are now just a wandering traveler.")
         speak("Class selection cleared. You are now just a wandering traveler.")
 
-# Function to provide lore about the "world" (instead of just about the program)
+# Function providing lore about the "world" 
 def about_program():
     about_text = "You are a hero on a grand adventure, seeking wisdom and strength. This program offers guidance and encouragement on your journey."
     print("\n📜 " + about_text + "\n")
@@ -80,6 +80,7 @@ def main():
         print("🛡 Type 'class' to choose your adventurer's path.")
         print("📜 Type 'lore' to learn about this realm.")
         print("🚪 Type 'Q' or 'quit' to leave the tavern.")
+        #I looked up emojis to add personality and visual context to the prompts.
         
         choice = input("\n[Enter/class/lore/Q]: ").strip().lower()
 
